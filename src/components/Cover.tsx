@@ -7,12 +7,14 @@ import {
   Avatar,
   Button,
 } from "@nextui-org/react";
+import { Image } from "@nextui-org/image";
+import Link from "next/link";
 
 export default function Cover() {
   const isFollowed = false;
 
   return (
-    <Card className="max-w-[440px] h-[70vh]">
+    <Card className="max-w-[100%] ">
       <CardHeader className="justify-between">
         <div className="flex gap-5">
           <Avatar
@@ -31,6 +33,8 @@ export default function Cover() {
           </div>
         </div>
         <Button
+          as={Link}
+          href="https://x.com/DuttaAbir390"
           className={
             isFollowed
               ? "bg-transparent text-foreground border-default-200"
@@ -41,30 +45,32 @@ export default function Cover() {
           size="sm"
           variant={isFollowed ? "bordered" : "solid"}
         >
-          {isFollowed ? "Unfollow" : "Follow"}
+          {isFollowed ? "Unfollow" : "Follow Creator"}
         </Button>
       </CardHeader>
-      <CardBody className="px-4 py-2 text-small text-default-400">
-        <p className="text-2xl mt-5">
-          Join the platform for staying informed about all the latest tech news!
-        </p>
-        <span className="pt-2">
-          #keepothersinformed
-          <span className="py-2" aria-label="computer" role="img">
-            💻
+      <CardBody className="px-4 md:flex  py-2 text-small text-default-400">
+        <Image
+          //   isBlurred
+          width={300}
+          height={200}
+          radius="lg"
+          src="https://nextui-docs-v2.vercel.app/images/hero-card-complete.jpeg"
+          alt="Bloggify Home Page"
+          className="mx-5  mb-3"
+        />
+        <div className="pb-5">
+          <p className="text-2xl">
+            Join the platform for staying informed about all the latest tech
+            news!
+          </p>
+          <span className="pt-2">
+            #keepothersinformed
+            <span className="py-2" aria-label="computer" role="img">
+              💻
+            </span>
           </span>
-        </span>
+        </div>
       </CardBody>
-      <CardFooter className="gap-3">
-        <div className="flex gap-1">
-          <p className="font-semibold text-default-400 text-small">4</p>
-          <p className=" text-default-400 text-small">Following</p>
-        </div>
-        <div className="flex gap-1">
-          <p className="font-semibold text-default-400 text-small">97.1K</p>
-          <p className="text-default-400 text-small">Followers</p>
-        </div>
-      </CardFooter>
     </Card>
   );
 }

@@ -7,31 +7,42 @@ import {
   Link,
   Button,
 } from "@nextui-org/react";
-
 import nextLink from "next/link";
-import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
-import { User } from "@clerk/nextjs/server";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+
 export default function Header() {
   return (
-    <Navbar className="border-b border-gray-800 mb-5">
+    <Navbar className="border-b border-gray-800 mb-5 ">
       <NavbarBrand>
-        <Link as={nextLink} href="/" color="foreground">
-          <p className="font-bold text-inherit italic">Bloggify</p>
-        </Link>
+        <SignedOut>
+          <Link as={nextLink} href="/" color="foreground">
+            <p className=" font-bold text-inherit italic">Bloggify</p>
+          </Link>
+        </SignedOut>
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
       </NavbarBrand>
-      <NavbarContent className="hidden md:flex gap-4" justify="center">
+      <NavbarContent className="md:flex gap-4" justify="start">
+        <SignedIn>
+          <NavbarItem>
+            <Link
+              as={nextLink}
+              className="hover:bg-zinc-800 rounded-md px-4 py-2  transition-all duration-250 hover:text-gray-50"
+              color="foreground"
+              href="/"
+            >
+              Home
+            </Link>
+          </NavbarItem>
+        </SignedIn>
         <NavbarItem>
           <Link
             as={nextLink}
-            className="hover:underline underline-offset-2 transition-all duration-250 hover:text-gray-50"
+            className="hover:bg-zinc-800 rounded-md px-4 py-2  transition-all duration-250 hover:text-gray-50"
+            href="/posts"
             color="foreground"
-            href="/"
           >
-            Home
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link as={nextLink} href="/posts" color="foreground">
             Posts
           </Link>
         </NavbarItem>
@@ -39,19 +50,26 @@ export default function Header() {
       <NavbarContent justify="end">
         <SignedOut>
           <NavbarItem>
-            <Link
-              as={nextLink}
-              className="hover:bg-zinc-800 transition-all duration-500 border border-gray-200 rounded-lg px-2 py-1 "
-              color="foreground"
-              href="/new-blog"
-            >
-              Post
-            </Link>
+            <div className="bg-zinc-800 hover:bg-transparent transition-all duration-500 border border-gray-200 rounded-lg px-2 py-1 ">
+              <SignInButton>Sign In</SignInButton>
+            </div>
           </NavbarItem>
         </SignedOut>
-        <SignedIn>
-          <UserButton />
-        </SignedIn>
+        <div className="hidden md:flex">
+          <SignedIn>
+            <NavbarItem>
+              <Link
+                showAnchorIcon
+                as={nextLink}
+                className=" bg-zinc-800 hover:bg-transparent transition-all duration-500 border border-gray-200 rounded-lg px-2 py-1 "
+                color="foreground"
+                href="/new-blog"
+              >
+                Post
+              </Link>
+            </NavbarItem>
+          </SignedIn>
+        </div>
       </NavbarContent>
     </Navbar>
   );

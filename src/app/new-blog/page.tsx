@@ -5,7 +5,9 @@ import Page from "../sign-in/[[...sign-in]]/page";
 const page = () => {
   return (
     <div>
-      <SignedIn>Create post</SignedIn>
+      <SignedIn>
+        <div className="max-w-[75vw] mx-auto ">Create A new post</div>
+      </SignedIn>
       <SignedOut>
         <Page />
       </SignedOut>
