@@ -11,17 +11,21 @@
   "dependencies": {
     "@clerk/nextjs": "^5.2.4",
     "@nextui-org/avatar": "^2.0.32",
+    "@nextui-org/button": "^2.0.37",
     "@nextui-org/card": "^2.0.33",
+    "@nextui-org/input": "^2.2.4",
     "@nextui-org/link": "^2.0.34",
     "@nextui-org/navbar": "^2.0.36",
     "@nextui-org/react": "^2.4.6",
     "@nextui-org/scroll-shadow": "^2.1.19",
     "@nextui-org/user": "^2.0.33",
+    "@radix-ui/react-label": "^2.1.0",
     "clsx": "^2.1.1",
     "framer-motion": "^11.3.8",
     "next": "14.2.5",
     "react": "^18",
     "react-dom": "^18",
+    "simplex-noise": "^4.0.2",
     "tailwind-merge": "^2.4.0"
   },
   "devDependencies": {

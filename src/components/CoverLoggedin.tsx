@@ -1,30 +1,31 @@
+"use client";
 import React from "react";
 import { Link } from "@nextui-org/react";
 import nextLink from "next/link";
+import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
+import { WavyBackground } from "@/components/ui/wavy-background";
+import { ScrollShadow } from "@nextui-org/scroll-shadow";
 
 const CoverLoggedin = () => {
+  const words = `Keep your friends rich and your enemies rich Then find out which
+          is which! \n -Ultron
+`;
+
   return (
-    <div>
-      <div className="flex flex-col items-center justify-start max-w-[80vw] mx-auto bg-zinc-900 rounded-lg px-2 py-4 mb-5">
-        <h1 className="text-lg italic font-bold">
-          &quot;Keep your friends rich and your enemies rich Then find out which
-          is which!&quot;
-        </h1>
-        <span>-Ultron</span>
-      </div>
-      <div className="flex flex-col items-center justify-start max-w-[80vw] mx-auto">
-        <h2 className="text-sm">Fill others with your knowledge:</h2>
+    <ScrollShadow hideScrollBar className="w-full h-[85vh]">
+      <WavyBackground className="max-w-xl flex flex-col items-center justify-center gap-2 mx-auto pb-40 px-2 md:px-0">
+        <TextGenerateEffect words={words} />
         <Link
           showAnchorIcon
           as={nextLink}
-          className=" bg-zinc-800 hover:bg-transparent transition-all duration-500 border border-gray-200 rounded-lg px-2 py-1 "
+          className=" bg-transparent transition-all duration-500 border border-gray-200 rounded-lg px-2 py-1 "
           color="foreground"
           href="/new-blog"
         >
           Post A New Blog
         </Link>
-      </div>
-    </div>
+      </WavyBackground>
+    </ScrollShadow>
   );
 };
 
