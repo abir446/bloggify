@@ -4,22 +4,21 @@ import Image from "next/image";
 import React from "react";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 import Link from "next/link";
-import { Avatar } from "@nextui-org/react";
-import User from "./User";
+
 import UserCard from "./User";
 
 interface ThreeDCardDemoProps {
   title: string;
   id: number;
-  // imageUrl: string;
+  imageUrl: string;
   // linkUrl: string;
 }
 
 export function ThreeDCardDemo({
   title,
   id,
+  imageUrl,
 }: // body,
-// imageUrl,
 // linkUrl,
 ThreeDCardDemoProps) {
   return (
@@ -33,15 +32,17 @@ ThreeDCardDemoProps) {
           {title}
         </CardItem>
 
-        <CardItem translateZ="100" className="w-full mt-4">
-          <Image
-            src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2560&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            height="800"
-            width="800"
-            className="h-50 w-full object-cover rounded-xl group-hover/card:shadow-xl"
-            alt="thumbnail"
-          />
-        </CardItem>
+        {imageUrl && (
+          <CardItem translateZ="100" className="w-full mt-4">
+            <Image
+              src={imageUrl}
+              height="800"
+              width="800"
+              className="h-50 w-full object-cover rounded-xl group-hover/card:shadow-xl"
+              alt="thumbnail"
+            />
+          </CardItem>
+        )}
         <div className="flex justify-between items-center mt-20">
           <CardItem
             translateZ={20}

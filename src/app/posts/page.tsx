@@ -1,10 +1,13 @@
 import { ThreeDCardDemo } from "@/components/PostCard";
 import React from "react";
 import { ScrollShadow } from "@nextui-org/scroll-shadow";
+import prisma from "@/lib/db";
 
 const page = async () => {
   const response = await fetch("https://jsonplaceholder.typicode.com/posts");
   const data = await response.json();
+  const data1 = await prisma.post.findMany();
+  console.log(data1);
   return (
     <ScrollShadow hideScrollBar className="w-full h-[85vh]">
       <div className="px-5  md:px-0">
@@ -12,8 +15,13 @@ const page = async () => {
           <h2 className="text-center  text-2xl ">Recent Posts</h2>
         </div>
         <div className="flex flex-col gap-4 ">
-          {data.map((post: any) => (
-            <ThreeDCardDemo key={post.id} id={post.id} title={post.title} />
+          {data1.map((post: any) => (
+            <ThreeDCardDemo
+              key={post.id}
+              id={post.id}
+              title={post.title}
+              imageUrl={post.imageUrl}
+            />
           ))}
         </div>
       </div>
