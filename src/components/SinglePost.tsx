@@ -8,15 +8,15 @@ import { title } from "process";
 interface SinglePostProps {
   t: string;
   b: string;
-  imageUrl: string;
+  //   imageUrl: string;
   // linkUrl: string;
 }
 
 export function SinglePost({
   t,
   b,
-  imageUrl,
-}: // linkUrl,
+}: //   imageUrl,
+// linkUrl,
 SinglePostProps) {
   const dummyContent = [
     {

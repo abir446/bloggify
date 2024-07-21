@@ -11,16 +11,16 @@ import UserCard from "./User";
 interface ThreeDCardDemoProps {
   title: string;
   id: number;
-  imageUrl: string;
+  // imageUrl: string;
   // linkUrl: string;
 }
 
 export function ThreeDCardDemo({
   title,
   id,
-  // body,
-  imageUrl,
-}: // linkUrl,
+}: // body,
+// imageUrl,
+// linkUrl,
 ThreeDCardDemoProps) {
   return (
     <CardContainer className="inter-var">
