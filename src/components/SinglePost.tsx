@@ -7,7 +7,7 @@ import { TracingBeam } from "@/components/ui/tracing-beam";
 import { title } from "process";
 interface SinglePostProps {
   t: string;
-
+  b: string;
   imageUrl: string;
   // linkUrl: string;
 }
