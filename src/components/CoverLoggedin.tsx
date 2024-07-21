@@ -7,8 +7,8 @@ const CoverLoggedin = () => {
     <div>
       <div className="flex flex-col items-center justify-start max-w-[80vw] mx-auto bg-zinc-900 rounded-lg px-2 py-4 mb-5">
         <h1 className="text-lg italic font-bold">
-          "Keep your friends rich and your enemies rich Then find out which is
-          which!"
+          &quot;Keep your friends rich and your enemies rich Then find out which
+          is which!&quot;
         </h1>
         <span>-Ultron</span>
       </div>
