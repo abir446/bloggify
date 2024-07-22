@@ -4,15 +4,13 @@ import { ScrollShadow } from "@nextui-org/scroll-shadow";
 import prisma from "@/lib/db";
 
 const page = async () => {
-  const response = await fetch("https://jsonplaceholder.typicode.com/posts");
-  const data = await response.json();
   const data1 = await prisma.post.findMany();
   console.log(data1);
   return (
     <ScrollShadow hideScrollBar className="w-full h-[85vh]">
       <div className="px-5  md:px-0">
         <div className="mb-2 ">
-          <h2 className="text-center  text-2xl ">Recent Posts</h2>
+          <h2 className="text-center  text-2xl">Recent Posts</h2>
         </div>
         <div className="flex flex-col gap-4 ">
           {data1.map((post: any) => (
