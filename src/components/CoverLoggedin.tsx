@@ -6,9 +6,9 @@ import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import { WavyBackground } from "@/components/ui/wavy-background";
 import { ScrollShadow } from "@nextui-org/scroll-shadow";
 
+
 const CoverLoggedin = () => {
-  const words = `Keep your friends rich and your enemies rich Then find out which
-          is which! \n -Ultron
+  const words = `Discover, Share, and Inspire: Join Our Community of Passionate Writers and Readers Today!
 `;
 
   return (
