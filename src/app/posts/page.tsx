@@ -19,6 +19,7 @@ const page = async () => {
               id={post.id}
               title={post.title}
               imageUrl={post.imageUrl}
+              username={post.username}
             />
           ))}
         </div>

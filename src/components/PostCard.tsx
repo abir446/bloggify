@@ -11,13 +11,14 @@ interface ThreeDCardDemoProps {
   title: string;
   id: number;
   imageUrl: string;
-  // linkUrl: string;
+  username: string;
 }
 
 export function ThreeDCardDemo({
   title,
   id,
   imageUrl,
+  username,
 }: // body,
 // linkUrl,
 ThreeDCardDemoProps) {
@@ -28,7 +29,7 @@ ThreeDCardDemoProps) {
           translateZ="50"
           className="text-xl w-full font-bold text-neutral-600 dark:text-white "
         >
-          <UserCard />
+          <UserCard username={username} />
           {title}
         </CardItem>
 

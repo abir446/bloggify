@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-
+import { useUser } from "@clerk/clerk-react";
 import { Input } from "@nextui-org/input";
 import { Textarea } from "@nextui-org/input";
 import { Button } from "@nextui-org/button";
@@ -9,25 +9,41 @@ import { CldUploadButton } from "next-cloudinary";
 import { cn } from "@/lib/utils";
 
 export function FormCover() {
+  const { user } = useUser();
   const [imageUrl, setImageUrl] = useState<string>("");
+  const username = user?.fullName;
 
   const handleUpload = (result: any) => {
     setImageUrl(result.info.secure_url);
   };
 
+  if (!user) return null;
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     formData.append("imageUrl", imageUrl);
-    console.log(formData);
+
+    // console.log("User object:", user); // Debugging line
+    // console.log("User full name:", user.fullName); // Debugging line
+
+    if (user.fullName) {
+      formData.append("username", user.fullName);
+    } else {
+      console.error("User full name is null or undefined");
+      return;
+    }
+
     await createPost(formData);
-    console.log("Form submitted with image URL:", imageUrl);
+    // console.log("Form submitted with image URL:", imageUrl);
+    // console.log("Form data username:", formData.get("username")); // Debugging line
   };
 
   return (
     <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
       <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
         Welcome to Bloggify
+        {username}
       </h2>
       <p className="text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300">
         By posting a blog, you help others to gain your knowledge
