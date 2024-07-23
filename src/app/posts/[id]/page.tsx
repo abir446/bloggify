@@ -3,11 +3,13 @@ import React from "react";
 import { ScrollShadow } from "@nextui-org/scroll-shadow";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import prisma from "@/lib/db";
+import { ObjectId } from "mongodb";
 
 const page = async ({ params }: { params: Params }) => {
+  const postId = new ObjectId(params.id);
   const post = await prisma.post.findUnique({
     where: {
-      id: parseInt(params.id),
+      id: postId.toString(),
     },
   });
 
