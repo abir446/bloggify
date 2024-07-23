@@ -5,9 +5,18 @@ generator client {
   provider = "prisma-client-js"
 }
 
+//local
+// datasource db {
+//   provider = "sqlite"
+//   url = env("DATABASE_URL") // uses a direct connection
+// }
+
+
+//vercel
 datasource db {
-  provider = "sqlite"
-  url = env("DATABASE_URL") // uses a direct connection
+  provider = "postgresql"
+  url = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 }
 
 model Post{
