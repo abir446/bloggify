@@ -2,17 +2,16 @@ import React from "react";
 import { User } from "@nextui-org/react";
 
 interface UserCardProps {
-  username: String;
+  username: string;
+  userImage: string;
 }
 
-export default function UserCard({ username }: UserCardProps) {
+export default function UserCard({ username, userImage }: UserCardProps) {
   return (
     <User
       className="w-full ite"
-      name={` ${username}`}
-      avatarProps={{
-        src: "https://i.pravatar.cc/150?u=a04258114e29026702d",
-      }}
+      name={username}
+      avatarProps={{ src: userImage }}
     />
   );
 }

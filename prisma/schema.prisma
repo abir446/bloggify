@@ -15,6 +15,7 @@ model Post{
   title String
   body String
   username String
+  userImage String
   imageUrl String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

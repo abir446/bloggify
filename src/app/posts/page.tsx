@@ -20,6 +20,7 @@ const page = async () => {
               title={post.title}
               imageUrl={post.imageUrl}
               username={post.username}
+              userImage={post.userImage}
             />
           ))}
         </div>

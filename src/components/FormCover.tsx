@@ -10,24 +10,25 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 
 export function FormCover() {
+  
   const { user } = useUser();
+
   const [imageUrl, setImageUrl] = useState<string>("");
   const username = user?.fullName;
 
+  if (!user) return null;
   const handleUpload = (result: any) => {
     setImageUrl(result.info.secure_url);
   };
-
-  if (!user) return null;
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     formData.append("imageUrl", imageUrl);
-
-    // console.log("User object:", user); // Debugging line
-    // console.log("User full name:", user.fullName); // Debugging line
-
+    if (user.imageUrl) {
+      console.log(imageUrl);
+      formData.append("userImage", user.imageUrl);
+    }
     if (user.fullName) {
       formData.append("username", user.fullName);
     } else {
@@ -36,8 +37,6 @@ export function FormCover() {
     }
 
     await createPost(formData);
-    // console.log("Form submitted with image URL:", imageUrl);
-    // console.log("Form data username:", formData.get("username")); // Debugging line
   };
 
   return (

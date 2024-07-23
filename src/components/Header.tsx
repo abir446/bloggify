@@ -65,7 +65,7 @@ export default function Header() {
                 color="foreground"
                 href="/new-blog"
               >
-                Post
+                Create Post
               </Link>
             </NavbarItem>
           </SignedIn>

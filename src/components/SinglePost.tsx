@@ -2,14 +2,11 @@
 import React from "react";
 
 import Image from "next/image";
-import { twMerge } from "tailwind-merge";
 import { TracingBeam } from "@/components/ui/tracing-beam";
-import { title } from "process";
 interface SinglePostProps {
   t: string;
   b: string;
   imageUrl: string;
-  // linkUrl: string;
 }
 
 export function SinglePost({
