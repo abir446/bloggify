@@ -9,6 +9,7 @@ const page = async () => {
       createdAt: 'desc',
     },
   });
+  await new Promise((resolve) => {setTimeout(resolve,1000)})
   return (
     <ScrollShadow hideScrollBar className="w-full h-[85vh]">
       <div className="px-5  md:px-0">

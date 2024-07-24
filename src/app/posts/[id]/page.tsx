@@ -6,6 +6,7 @@ import prisma from "@/lib/db";
 import { ObjectId } from "mongodb";
 
 const page = async ({ params }: { params: Params }) => {
+  await new Promise((resolve) => {setTimeout(resolve,1000)})
   const postId = new ObjectId(params.id);
   const post = await prisma.post.findUnique({
     where: {
