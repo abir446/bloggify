@@ -7,10 +7,10 @@ import { Button } from "@nextui-org/button";
 import { createPost } from "@/actions/actions";
 import { CldUploadButton } from "next-cloudinary";
 import { cn } from "@/lib/utils";
+import { ScrollShadow } from "@nextui-org/scroll-shadow";
 import Image from "next/image";
 
 export function FormCover() {
-  
   const { user } = useUser();
 
   const [imageUrl, setImageUrl] = useState<string>("");
@@ -40,68 +40,70 @@ export function FormCover() {
   };
 
   return (
-    <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
-      <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
-        Create a post as {username}
-      </h2>
-      <p className="text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300">
-        By posting a blog, you help others to gain your knowledge
-      </p>
-      <form className="my-8" onSubmit={handleSubmit}>
-        <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
-          <LabelInputContainer>
-            <Input
+    <ScrollShadow hideScrollBar className="w-full h-[85vh]">
+      <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
+        <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
+          Create a post as {username}
+        </h2>
+        <p className="text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300">
+          By posting a blog, you help others to gain your knowledge
+        </p>
+        <form className="my-8" onSubmit={handleSubmit}>
+          <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
+            <LabelInputContainer>
+              <Input
+                required
+                name="title"
+                type="text"
+                label="Post Title"
+                variant="bordered"
+                defaultValue=""
+                className="w-full"
+                labelPlacement="outside"
+              />
+            </LabelInputContainer>
+          </div>
+          <LabelInputContainer className="mb-4">
+            <Textarea
               required
-              name="title"
-              type="text"
-              label="Post Title"
+              name="body"
+              label="Post Body"
               variant="bordered"
+              labelPlacement="inside"
+              placeholder=""
               defaultValue=""
               className="w-full"
-              labelPlacement="outside"
             />
           </LabelInputContainer>
-        </div>
-        <LabelInputContainer className="mb-4">
-          <Textarea
-            required
-            name="body"
-            label="Description"
-            variant="bordered"
-            labelPlacement="inside"
-            placeholder=""
-            defaultValue=""
-            className="w-full"
-          />
-        </LabelInputContainer>
-        <LabelInputContainer className="mb-4 ">
-          <CldUploadButton
-            className="h-24 border-2 border-dotted rounded-lg grid place-items-center relative"
-            uploadPreset="bloggify"
-            onUpload={handleUpload}
+          <LabelInputContainer className="mb-4 ">
+            <CldUploadButton
+              className="h-24 border-2 border-dotted rounded-lg grid place-items-center relative"
+              uploadPreset="bloggify"
+              onUpload={handleUpload}
+            >
+              Add Photo
+              {imageUrl && (
+                <Image
+                  src={imageUrl}
+                  fill
+                  className="absolute object-cover inset-0 opacity-50"
+                  alt={"Image"}
+                />
+              )}
+            </CldUploadButton>
+          </LabelInputContainer>
+          <Button
+            type="submit"
+            className="w-full hover:bg-zinc-900 transition-all duration-400"
+            color="default"
+            variant="ghost"
           >
-            Add Photo
-            {imageUrl && (
-              <Image
-                src={imageUrl}
-                fill
-                className="absolute object-cover inset-0"
-                alt={"Image"}
-              />
-            )}
-          </CldUploadButton>
-        </LabelInputContainer>
-        <Button
-          type="submit"
-          className="w-full hover:bg-zinc-900 transition-all duration-400"
-          color="default"
-          variant="ghost"
-        >
-          Post
-          <BottomGradient />
-        </Button>
-      </form>
-    </div>
+            Post
+            <BottomGradient />
+          </Button>
+        </form>
+      </div>
+    </ScrollShadow>
   );
 }
 
