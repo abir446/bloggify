@@ -16,9 +16,6 @@ export async function createPost(formData: FormData) {
     const username = formData.get("username") as string;
     const userImage = formData.get("userImage") as string;
 
-    // console.log(title);
-    console.log(userImage);
-
     await prisma.post.create({
       data: {
         title,
