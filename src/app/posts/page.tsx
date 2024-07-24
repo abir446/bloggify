@@ -4,8 +4,11 @@ import { ScrollShadow } from "@nextui-org/scroll-shadow";
 import prisma from "@/lib/db";
 
 const page = async () => {
-  const data1 = await prisma.post.findMany();
-  console.log(data1);
+  const data1 = await prisma.post.findMany({
+    orderBy: {
+      createdAt: 'desc',
+    },
+  });
   return (
     <ScrollShadow hideScrollBar className="w-full h-[85vh]">
       <div className="px-5  md:px-0">
