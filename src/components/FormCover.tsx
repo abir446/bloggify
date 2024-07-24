@@ -12,7 +12,7 @@ import Image from "next/image";
 
 export function FormCover() {
   const { user } = useUser();
-
+  const [isLoading, setIsLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState<string>("");
   const username = user?.fullName;
 
@@ -23,6 +23,7 @@ export function FormCover() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsLoading(true);
     const formData = new FormData(e.currentTarget);
     formData.append("imageUrl", imageUrl);
     if (user.imageUrl) {
@@ -37,6 +38,8 @@ export function FormCover() {
     }
 
     await createPost(formData);
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
   };
 
   return (
@@ -97,8 +100,9 @@ export function FormCover() {
             className="w-full hover:bg-zinc-900 transition-all duration-400"
             color="default"
             variant="ghost"
+            isLoading={isLoading}
           >
-            Post
+            {isLoading ? "Submitting" : "Submit"}
             <BottomGradient />
           </Button>
         </form>
