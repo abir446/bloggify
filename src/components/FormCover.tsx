@@ -23,12 +23,16 @@ export function FormCover() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
+
     const formData = new FormData(e.currentTarget);
+  
     formData.append("imageUrl", imageUrl);
+
     if (user.imageUrl) {
       console.log(imageUrl);
       formData.append("userImage", user.imageUrl);
     }
+    
     if (user.fullName) {
       formData.append("username", user.fullName);
     } else {

@@ -7,6 +7,15 @@ import {Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, Navbar
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [isLoading1, setIsLoading1] = React.useState(false);
+
+  const handleClick = () =>{
+    setIsLoading(true);
+  }
+  const handleClick1 = () =>{
+    setIsLoading1(true);
+  }
 
   return (
     <Navbar onMenuOpenChange={setIsMenuOpen}>
@@ -37,15 +46,31 @@ export default function App() {
       <NavbarContent justify="end">
       <SignedIn>
         <NavbarItem >
-          <div className="bg-zinc-800 hover:bg-transparent transition-all duration-500 border border-gray-200 rounded-lg px-2 py-1 ">
-              <SignOutButton>Sign Out</SignOutButton>
+          <div className="bg-zinc-800 hover:bg-transparent transition-all duration-500 border border-gray-200 rounded-lg  ">
+              <SignOutButton><Button
+              onClick={handleClick1}
+              className="bg-transparent"
+            isLoading={isLoading1}
+          >
+            {isLoading1 ? "" : "Sign Out"}
+            <BottomGradient />
+          </Button></SignOutButton>
             </div>
         </NavbarItem>
         </SignedIn>
         <SignedOut>
           <NavbarItem>
-            <div className="bg-zinc-800 hover:bg-transparent transition-all duration-500 border border-gray-200 rounded-lg px-2 py-1 ">
-              <SignInButton>Sign In</SignInButton>
+            <div className="bg-zinc-800 hover:bg-transparent transition-all duration-500 border border-gray-200 rounded-lg ">
+              <SignInButton>
+              <Button
+              onClick={handleClick}
+              className="bg-transparent"
+            isLoading={isLoading}
+          >
+            {isLoading ? "" : "Sign In"}
+            <BottomGradient />
+          </Button>
+              </SignInButton>
             </div>
           </NavbarItem>
         </SignedOut>
@@ -108,3 +133,11 @@ export default function App() {
 
 
 
+const BottomGradient = () => {
+  return (
+    <>
+      <span className="group-hover/btn:opacity-100 block transition duration-500 opacity-0 absolute h-px w-full -bottom-px inset-x-0 bg-gradient-to-r from-transparent via-cyan-500 to-transparent" />
+      <span className="group-hover/btn:opacity-100 blur-sm block transition duration-500 opacity-0 absolute h-px w-1/2 mx-auto -bottom-px inset-x-10 bg-gradient-to-r from-transparent via-indigo-500 to-transparent" />
+    </>
+  );
+};
