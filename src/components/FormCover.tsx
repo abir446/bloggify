@@ -1,8 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { useUser } from "@clerk/clerk-react";
-import { Input } from "@nextui-org/input";
-import { Textarea } from "@nextui-org/input";
+import { Input,Textarea } from "@nextui-org/input";
 import { Button } from "@nextui-org/button";
 import { createPost } from "@/actions/actions";
 import { CldUploadButton } from "next-cloudinary";
