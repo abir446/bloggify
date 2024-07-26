@@ -31,6 +31,21 @@ export default function App() {
         </NavbarBrand>
       </NavbarContent>
 
+      <SignedIn>
+      <NavbarContent className="hidden sm:flex gap-4" justify="center">
+        <NavbarItem>
+          <Link
+            as={nextLink}
+            className="hover:bg-zinc-800 rounded-md px-4 py-2  transition-all duration-250 hover:text-gray-50"
+            href="/profile"
+            color="foreground"
+          >
+            Profile
+          </Link>
+        </NavbarItem>                
+      </NavbarContent>
+      </SignedIn>
+
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem>
           <Link
@@ -43,6 +58,7 @@ export default function App() {
           </Link>
         </NavbarItem>                
       </NavbarContent>
+
       <NavbarContent justify="end">
       <SignedIn>
         <NavbarItem >
