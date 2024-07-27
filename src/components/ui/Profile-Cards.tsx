@@ -1,29 +1,26 @@
-"use client";
-import { cn } from "@/lib/utils";
-import Image from "next/image";
+import React from "react";
+import {Card, CardHeader, CardBody, Image} from "@nextui-org/react";
 
-interface ProfileCardProps{
-    imgUrl: String,
+interface ProfileCardsProps{
+    imgUrl: string;
+    title: string;
 }
 
-export function ProfileCards({imgUrl}:ProfileCardProps) {
+export default function ProfileCards({imgUrl,title}: ProfileCardsProps) {
   return (
-    <div className="max-w-xs w-full group/card">
-      <div
-        className={cn(
-          " cursor-pointer overflow-hidden relative card h-96 rounded-md shadow-xl  max-w-sm mx-auto backgroundImage flex flex-col justify-between p-4",
-          `bg-[url(${imgUrl})] bg-cover`
-        )}
-      >
-        <div className="absolute w-full h-full top-0 left-0 transition duration-300 group-hover/card:bg-black opacity-60"></div>
-       
-        <div className="text content">
-          <h1 className="font-bold text-xl md:text-2xl text-gray-50 relative z-10">
-            Author Card
-          </h1>
-          
-        </div>
-      </div>
-    </div>
+    <Card className="py-4 md:px-16">
+      <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
+        
+        <h4 className="font-bold text-large">{title}</h4>
+      </CardHeader>
+      <CardBody className="overflow-visible py-2">
+        <Image
+          alt="Card background"
+          className="object-cover rounded-xl"
+          src={imgUrl}
+          width={270}
+        />
+      </CardBody>
+    </Card>
   );
 }

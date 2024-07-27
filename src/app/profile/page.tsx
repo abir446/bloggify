@@ -1,4 +1,4 @@
-import { ProfileCards } from "@/components/ui/Profile-Cards";
+import ProfileCards from "@/components/ui/Profile-Cards";
 import prisma from "@/lib/db";
 import { auth, currentUser } from "@clerk/nextjs/server";
 
@@ -21,13 +21,13 @@ export default async function Profile() {
 
         // Render a ProfileCard for each post
         const profileCards = data1.map((post) => (
-            <ProfileCards key={post.id} imgUrl={post.imageUrl} />
+            <ProfileCards key={post.id} imgUrl={post.imageUrl} title={post.title}/>
         ));
 
         return (
-            <div className="">
-                <div className="px-4">Hello there {user?.fullName}</div>
-                <div className="">
+            <div className="max-w-2xl mx-auto">
+                <div className="px-4 mb-4">Hello there {user?.fullName}</div>
+                <div className="flex flex-col gap-4 ">
                     {profileCards}
                 </div>
             </div>
