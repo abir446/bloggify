@@ -14,7 +14,7 @@ export default async function Profile() {
     try {
         const data1 = await prisma.post.findMany({
             where: {
-                username: user?.fullName,
+                username: user?.fullName || '',
             },
         });
         console.log('User posts:', data1);
