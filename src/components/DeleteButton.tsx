@@ -14,7 +14,7 @@ export default function DeleteButton({pid}:DeleteButtonProps){
     }
 
     return (
-        <Button onClick={handleDelete} color="danger">
+        <Button onClick={handleDelete} color="secondary">
         Delete Post
       </Button>
     )

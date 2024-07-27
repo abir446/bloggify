@@ -62,32 +62,32 @@ export default function App() {
       <NavbarContent justify="end">
       <SignedIn>
         <NavbarItem >
-          <div className="bg-zinc-800 hover:bg-transparent transition-all duration-500 border border-gray-200 rounded-lg  ">
+        
               <SignOutButton><Button
               onClick={handleClick1}
-              className="bg-transparent"
+              className="bg-transparent bg-transparent transition-all duration-500 border border-gray-200 rounded-lg  px-2 py-1"
             isLoading={isLoading1}
           >
             {isLoading1 ? "" : "Sign Out"}
             <BottomGradient />
           </Button></SignOutButton>
-            </div>
+          
         </NavbarItem>
         </SignedIn>
         <SignedOut>
           <NavbarItem>
-            <div className="bg-zinc-800 hover:bg-transparent transition-all duration-500 border border-gray-200 rounded-lg ">
+            
               <SignInButton>
               <Button
               onClick={handleClick}
-              className="bg-transparent"
+              className="bg-transparent transition-all duration-500 border border-gray-200 rounded-lg  px-2 py-1"
             isLoading={isLoading}
           >
             {isLoading ? "" : "Sign In"}
             <BottomGradient />
           </Button>
               </SignInButton>
-            </div>
+            
           </NavbarItem>
         </SignedOut>
         <div className="hidden md:flex">
@@ -96,7 +96,7 @@ export default function App() {
               <Link
                 showAnchorIcon
                 as={nextLink}
-                className=" bg-zinc-800 hover:bg-transparent transition-all duration-500 border border-gray-200 rounded-lg px-2 py-1 "
+                className=" bg-zinc-800 hover:bg-transparent transition-all duration-500 border border-gray-200 rounded-lg px-2 py-2 "
                 color="foreground"
                 href="/new-blog"
               >

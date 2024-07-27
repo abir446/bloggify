@@ -18,7 +18,7 @@ export default async function Profile() {
 
             },
         });
-        console.log('User posts:', data1);
+        
 
         // Render a ProfileCard for each post
         const profileCards = data1.map((post) => (
@@ -26,8 +26,8 @@ export default async function Profile() {
         ));
 
         return (
-            <div className="max-w-2xl mx-auto">
-                <div className="px-4 mb-4">Hello there {user?.fullName}</div>
+            <div className="max-w-lg mx-auto">
+                <div className="px-4 mb-4 text-xl text-center py-4">All Posts</div>
                 <div className="flex flex-col gap-4 ">
                     {profileCards}
                 </div>
