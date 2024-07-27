@@ -1,6 +1,3 @@
-// This is your Prisma schema file
-// Learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -8,6 +5,12 @@ generator client {
 datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL") // Ensure this environment variable is set with your MongoDB Atlas connection string
+}
+
+model User {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  posts     Post[]   // Relationship to posts
 }
 
 model Post {
@@ -19,4 +22,5 @@ model Post {
   imageUrl  String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  author    User     @relation(fields: [username], references: [id])
 }

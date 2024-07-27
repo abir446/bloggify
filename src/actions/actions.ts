@@ -15,6 +15,8 @@ export async function createPost(formData: FormData) {
     const imageUrl = formData.get("imageUrl") as string;
     const username = formData.get("username") as string;
     const userImage = formData.get("userImage") as string;
+    const author = username;
+    const userid = userId;
 
     await prisma.post.create({
       data: {
@@ -25,6 +27,8 @@ export async function createPost(formData: FormData) {
         imageUrl,
       },
     });
+    
+
 
     revalidatePath("/posts");
     redirect("/posts");
