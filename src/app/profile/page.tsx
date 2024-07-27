@@ -22,7 +22,7 @@ export default async function Profile() {
 
         // Render a ProfileCard for each post
         const profileCards = data1.map((post) => (
-            <ProfileCards key={post.id} imgUrl={post.imageUrl} title={post.title}/>
+            <ProfileCards key={post.id} pid={post.id} imgUrl={post.imageUrl} title={post.title}/>
         ));
 
         return (

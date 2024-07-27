@@ -36,3 +36,13 @@ export async function createPost(formData: FormData) {
     redirect("/posts");
   }
 }
+
+
+export async function DeletePost(pid:string){
+  await prisma.post.delete({
+    where: { id: pid },
+  });
+  console.log('Post deleted successfully');
+  revalidatePath("/posts");
+  revalidatePath("/profile");
+}
