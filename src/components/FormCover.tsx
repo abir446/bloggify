@@ -39,6 +39,14 @@ export function FormCover() {
       console.error("User full name is null or undefined");
       return;
     }
+    if (user.id) {
+      formData.append("userId", user.id);
+    } else {
+      console.error("User full name is null or undefined");
+      return;
+    }
+
+    console.log(formData)
 
     await createPost(formData);
     await new Promise((resolve) => setTimeout(resolve, 2000));

@@ -7,11 +7,6 @@ datasource db {
   url      = env("DATABASE_URL") // Ensure this environment variable is set with your MongoDB Atlas connection string
 }
 
-model User {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  name      String
-  posts     Post[]   // Relationship to posts
-}
 
 model Post {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
@@ -22,5 +17,4 @@ model Post {
   imageUrl  String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  author    User     @relation(fields: [username], references: [id])
 }
